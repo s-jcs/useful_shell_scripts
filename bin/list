@@ -1,0 +1,7 @@
+echo "scripts in repository:"
+cd ./scripts
+for file in *.sh
+do
+  echo ${file%.sh}
+done
+

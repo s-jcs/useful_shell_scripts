@@ -5,3 +5,4 @@ do
 	cp -v "$file" $file_path
 	chmod +x $file_path
 done
+

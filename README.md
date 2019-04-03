@@ -11,3 +11,9 @@ removes all scripts in scripts dir to user's bin dir.
 ```
 $ bin/clean
 ```
+
+## List
+lists all executable commands
+```
+$ bin/list
+```
