@@ -1,0 +1,7 @@
+cd ./scripts
+for file in *.sh
+do
+	file_path="/usr/local/bin/${file%.sh}"
+	cp -v "$file" $file_path
+	chmod +x $file_path
+done
