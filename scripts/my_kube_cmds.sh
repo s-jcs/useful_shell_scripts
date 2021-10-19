@@ -17,15 +17,20 @@ echo "<8> edit number of stateful sets \n"
 echo "<9> change namespace"
 echo "<10> change context \n"
 
+echo "Argo Rollouts\n"
+echo "<11> watch argo rollout\n"
+echo "<12> abort/revert rollout\n"
+echo "<12> promote rollout\n"
+
 while true; do
-    printf "current context: $(kubectl config current-context) | current namespace: $namespace | current pod: $pod | current statefulset: $statefulset \n"; 
+    printf "current context: $(kubectl config current-context) | current namespace: $namespace | current pod: $pod | current statefulset: $statefulset \n";
     read -p "Choose which command to use (type c for commands; ctr+c to exit)? " num
     case $num in
-        1 ) clear; kubectl get pods -n $namespace; echo "";;
+        1 ) clear; kubectl get pods -n $namespace -o wide; echo "";;
         2 ) clear; kubectl top po -n $namespace; echo "";;
         3 ) clear; read -p "which pod? " pod; \
             kubectl get pod $pod -n $namespace; \
-            echo "pod set to $pod \n";; 
+            echo "pod set to $pod \n";;
         4 ) clear; echo "pod: $pod"; \
             kubectl logs $pod -n $namespace; echo "";;
         5 ) clear; echo "context: $(kubectl config current-context) pod: $pod namespace: $namespace"; \
