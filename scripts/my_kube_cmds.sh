@@ -29,8 +29,8 @@ while true; do
     case $num in
         1 ) clear; kubectl get pods -n $namespace -o wide; echo "";;
         2 ) clear; kubectl top po -n $namespace; echo "";;
-        3 ) clear; kubectl get pods -n $namespace -o wide; \
-	    read -p "\n which pod? " pod; \
+        3 ) clear; kubectl get pods -n $namespace -o wide; echo""; \
+	    read -p "which pod? " pod; \
             kubectl get pod $pod -n $namespace; \
             echo "pod set to $pod \n";;
         4 ) clear; echo "pod: $pod"; \
@@ -52,7 +52,7 @@ while true; do
         10 ) clear; read -p "change namespace to: " namespace; echo "";;
         11 ) clear; read -p "change context to: " k_context; kubectl config use-context $k_context; echo "";;
         c ) clear; echo "Commands: "; echo "<1> get pods"; echo "<2> check top \n"; \
-            echo "<3> get/set pod"; echo "<4> check pod logs"; echo "<5> ender bash of set pod \n"; echo "<6> delete pod \n"; \
+            echo "<3> get/set pod"; echo "<4> check pod logs"; echo "<5> enter bash of set pod \n"; echo "<6> delete pod \n"; \
             echo "<7> get statefulsets"; echo "<8> get/set statefulset"; echo "<9> edit number of stateful sets \n"; \
             echo "<10> change namespace"; echo "<11> change context \n";;
         * ) echo "Please use a number from the shown commands";;
