@@ -29,7 +29,7 @@ while true; do
     case $num in
         1 ) clear; kubectl get pods -n $namespace -o wide; echo "";;
         2 ) clear; kubectl top po -n $namespace; echo "";;
-        3 ) clear; kubectl get pods -n $namespace -o wide \
+        3 ) clear; kubectl get pods -n $namespace -o wide; \
 	    read -p "\n which pod? " pod; \
             kubectl get pod $pod -n $namespace; \
             echo "pod set to $pod \n";;
