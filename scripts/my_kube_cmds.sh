@@ -35,7 +35,7 @@ while true; do
             echo "pod set to $pod \n";;
         4 ) clear; echo "pod: $pod"; \
             kubectl logs $pod -n $namespace; echo "";;
-				5 ) clear; kubectl exec -it $pod -- bash -n $namespace; echo "";;
+				5 ) clear; kubectl exec -it $pod -n $namespace -- bash; echo "";;
         6 ) clear; echo "context: $(kubectl config current-context) pod: $pod namespace: $namespace"; \
             read -p "YOU ARE ABOUT TO DELETE A POD, ARE YOU SURE? [Y/N] " yn; \
             case $yn in
