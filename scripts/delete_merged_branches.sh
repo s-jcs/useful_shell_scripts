@@ -1,1 +1,1 @@
-git branch --merged | egrep -v "(^\*|master|develop)" | xargs git branch -d
+git branch --merged | egrep -v "(^\*|main|master|develop)" | xargs git branch -d
