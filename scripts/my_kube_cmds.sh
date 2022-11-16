@@ -29,12 +29,13 @@ while true; do
     case $num in
         1 ) clear; kubectl get pods -n $namespace -o wide; echo "";;
         2 ) clear; kubectl top po -n $namespace; echo "";;
-        3 ) clear; read -p "which pod? " pod; \
+        3 ) clear; kubectl get pods -n $namespace -o wide \
+	    read -p "\n which pod? " pod; \
             kubectl get pod $pod -n $namespace; \
             echo "pod set to $pod \n";;
         4 ) clear; echo "pod: $pod"; \
             kubectl logs $pod -n $namespace; echo "";;
-				5 ) clear; kubectl exec -it $pod bash -n $namespace; echo "";;
+				5 ) clear; kubectl exec -it $pod -- bash -n $namespace; echo "";;
         6 ) clear; echo "context: $(kubectl config current-context) pod: $pod namespace: $namespace"; \
             read -p "YOU ARE ABOUT TO DELETE A POD, ARE YOU SURE? [Y/N] " yn; \
             case $yn in
