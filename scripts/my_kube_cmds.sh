@@ -1,4 +1,9 @@
 k_context=$(kubectl config current-context)
+{
+    kubectl argo rollouts version
+} || {
+    echo "kubectl argo rollouts may not be installed."
+}
 echo "current context: $k_context"
 read -p "What's the namespace? " namespace
 
@@ -51,10 +56,11 @@ while true; do
         9 ) clear; kubectl edit statefulsets $statefulset -n $namespace; echo "";;
         10 ) clear; read -p "change namespace to: " namespace; echo "";;
         11 ) clear; read -p "change context to: " k_context; kubectl config use-context $k_context; echo "";;
-        c ) clear; echo "Commands: "; echo "<1> get pods"; echo "<2> check top \n"; \
-            echo "<3> get/set pod"; echo "<4> check pod logs"; echo "<5> enter bash of set pod \n"; echo "<6> delete pod \n"; \
+        c ) clear; echo "Commands: "; echo "<1> get pods"; echo "<2> check top \n\n"; \
+            echo "<3> get/set pod"; echo "<4> check pod logs"; echo "<5> enter bash of set pod \n"; echo "<6> delete pod \n\n"; \
             echo "<7> get statefulsets"; echo "<8> get/set statefulset"; echo "<9> edit number of stateful sets \n"; \
-            echo "<10> change namespace"; echo "<11> change context \n";;
+            echo "<10> change namespace"; echo "<11> change context \n\n"; echo "<12> watch argo rollout \n"; echo "<13> abort/revert rollout \n"; \n
+            echo "<14> promote rollout \n\n"; echo "<15> get namespaces";;
         * ) echo "Please use a number from the shown commands";;
     esac
 done
